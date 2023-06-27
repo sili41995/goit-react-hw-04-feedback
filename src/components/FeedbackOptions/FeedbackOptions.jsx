@@ -4,19 +4,17 @@ import css from 'components/FeedbackOptions/FeedbackOptions.styled';
 const { List, Item, Button } = css;
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-  const keys = Object.keys(options);
-
   return (
     <List>
-      {keys.map((key) => (
-        <Item key={key}>
+      {options.map((option) => (
+        <Item key={option}>
           <Button
             type='button'
             onClick={() => {
-              onLeaveFeedback(key);
+              onLeaveFeedback(option);
             }}
           >
-            {key}
+            {option}
           </Button>
         </Item>
       ))}
@@ -25,11 +23,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.shape({
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-  }).isRequired,
+  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
 
