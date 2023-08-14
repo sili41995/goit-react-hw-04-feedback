@@ -1,9 +1,4 @@
-const countTotalFeedback = (...args) => {
-  let feedbacks = 0;
-  for (const arg of args) {
-    feedbacks += arg;
-  }
-  return feedbacks;
-};
+const countTotalFeedback = (...args) =>
+  args.reduce((acc, value) => acc + value, 0);
 
 export default countTotalFeedback;
